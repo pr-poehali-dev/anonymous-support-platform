@@ -87,7 +87,7 @@ export default function Index() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-2xl">🤝</span>
+                <span className="text-2xl text-violet-400">🤝</span>
               </div>
               <span className="text-xl font-semibold">Анонимная Поддержка</span>
             </div>
