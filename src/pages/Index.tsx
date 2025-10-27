@@ -23,12 +23,12 @@ interface Story {
 }
 
 const categories = [
-  { name: 'Радость', color: 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200', emoji: '😊' },
-  { name: 'Грусть', color: 'bg-blue-100 text-blue-700 hover:bg-blue-200', emoji: '😢' },
-  { name: 'Одиночество', color: 'bg-purple-100 text-purple-700 hover:bg-purple-200', emoji: '🤍' },
-  { name: 'Тревога', color: 'bg-red-100 text-red-700 hover:bg-red-200', emoji: '😰' },
-  { name: 'Надежда', color: 'bg-green-100 text-green-700 hover:bg-green-200', emoji: '🌟' },
-  { name: 'Страх', color: 'bg-orange-100 text-orange-700 hover:bg-orange-200', emoji: '😨' },
+  { name: 'Радость', color: 'bg-amber-50 text-amber-700 hover:bg-amber-100 border-amber-200', emoji: '😊' },
+  { name: 'Грусть', color: 'bg-sky-50 text-sky-700 hover:bg-sky-100 border-sky-200', emoji: '😢' },
+  { name: 'Одиночество', color: 'bg-violet-50 text-violet-700 hover:bg-violet-100 border-violet-200', emoji: '🤍' },
+  { name: 'Тревога', color: 'bg-rose-50 text-rose-700 hover:bg-rose-100 border-rose-200', emoji: '😰' },
+  { name: 'Надежда', color: 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border-emerald-200', emoji: '🌟' },
+  { name: 'Страх', color: 'bg-orange-50 text-orange-700 hover:bg-orange-100 border-orange-200', emoji: '😨' },
 ];
 
 const mockStories: Story[] = [
@@ -36,7 +36,7 @@ const mockStories: Story[] = [
     id: 1,
     text: 'Сегодня впервые за долгое время почувствовал себя спокойно. Нашёл тихое место в парке и просто сидел, слушая пение птиц. Это помогло мне понять, что не всё так плохо...',
     category: 'Надежда',
-    categoryColor: 'bg-green-100 text-green-700',
+    categoryColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
     emoji: '🌟',
     timestamp: '2 часа назад'
   },
@@ -44,7 +44,7 @@ const mockStories: Story[] = [
     id: 2,
     text: 'Иногда кажется, что никто не понимает, через что я прохожу. Но я знаю, что здесь меня выслушают без осуждения. Спасибо всем, кто делится своими историями.',
     category: 'Одиночество',
-    categoryColor: 'bg-purple-100 text-purple-700',
+    categoryColor: 'bg-violet-50 text-violet-700 border-violet-200',
     emoji: '🤍',
     timestamp: '5 часов назад'
   },
@@ -52,7 +52,7 @@ const mockStories: Story[] = [
     id: 3,
     text: 'Начал новый проект, который откладывал много лет. Чувствую волнение и радость одновременно! Жизнь продолжается, и это прекрасно.',
     category: 'Радость',
-    categoryColor: 'bg-yellow-100 text-yellow-700',
+    categoryColor: 'bg-amber-50 text-amber-700 border-amber-200',
     emoji: '😊',
     timestamp: '1 день назад'
   },
@@ -60,7 +60,7 @@ const mockStories: Story[] = [
     id: 4,
     text: 'Ночами не сплю, постоянно думаю о завтрашнем дне. Хочу научиться отпускать тревогу и жить настоящим моментом.',
     category: 'Тревога',
-    categoryColor: 'bg-red-100 text-red-700',
+    categoryColor: 'bg-rose-50 text-rose-700 border-rose-200',
     emoji: '😰',
     timestamp: '1 день назад'
   }
@@ -75,28 +75,36 @@ function HomePage({ onCreateStory }: { onCreateStory: () => void }) {
     : stories;
 
   return (
-    <main className="container mx-auto px-4 py-12">
-      <div className="text-center mb-16 animate-fade-in">
-        <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-          Поделись своей историей
+    <main className="container mx-auto px-4 py-16">
+      <div className="text-center mb-20 animate-fade-in max-w-4xl mx-auto">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
+          <Icon name="ShieldCheck" size={18} className="text-primary" />
+          <span className="text-sm font-medium text-primary">100% анонимно и безопасно</span>
+        </div>
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-purple-600 bg-clip-text text-transparent leading-tight">
+          Поделись своей историей и найди поддержку
         </h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-          Безопасное пространство для анонимного обмена мыслями и получения поддержки. 
-          Мы слушаем без осуждения.
+        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
+          Безопасное пространство, где тебя выслушают без осуждения. 
+          Делись мыслями анонимно и получай поддержку от тех, кто понимает.
         </p>
         
-        <Button size="lg" className="text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all animate-scale-in" onClick={onCreateStory}>
-          <Icon name="PenLine" size={20} className="mr-2" />
+        <Button 
+          size="lg" 
+          className="text-lg px-10 py-7 shadow-xl hover:shadow-2xl transition-all animate-scale-in bg-gradient-to-r from-primary to-accent hover:scale-105" 
+          onClick={onCreateStory}
+        >
+          <Icon name="PenLine" size={22} className="mr-2" />
           Создать историю
         </Button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <aside className="lg:col-span-1">
-          <Card className="sticky top-24">
+          <Card className="sticky top-24 shadow-md border-2">
             <CardContent className="p-6">
-              <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                <Icon name="Sparkles" size={20} />
+              <h3 className="font-bold text-xl mb-5 flex items-center gap-2">
+                <Icon name="Sparkles" size={22} className="text-primary" />
                 Категории
               </h3>
               <div className="space-y-2">
@@ -121,12 +129,12 @@ function HomePage({ onCreateStory }: { onCreateStory: () => void }) {
                 ))}
               </div>
 
-              <div className="mt-8 p-4 bg-secondary/50 rounded-lg">
+              <div className="mt-8 p-5 bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl border border-primary/20">
                 <div className="flex items-start gap-3">
-                  <Icon name="ShieldCheck" size={20} className="text-primary mt-1 flex-shrink-0" />
+                  <Icon name="Lock" size={22} className="text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-medium mb-2">Гарантия безопасности</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <h4 className="font-semibold mb-2 text-base">Гарантия безопасности</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       Мы не собираем личные данные. Все истории публикуются полностью анонимно.
                     </p>
                   </div>
@@ -140,33 +148,33 @@ function HomePage({ onCreateStory }: { onCreateStory: () => void }) {
           {filteredStories.map((story, index) => (
             <Card 
               key={story.id} 
-              className="hover:shadow-lg transition-all duration-300 animate-fade-in"
+              className="card-hover border-2 animate-fade-in shadow-md"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <Avatar className="w-12 h-12 bg-gradient-to-br from-primary/20 to-purple-300">
-                    <AvatarFallback className="text-2xl">{story.emoji}</AvatarFallback>
+              <CardContent className="p-7">
+                <div className="flex items-start gap-5">
+                  <Avatar className="w-14 h-14 bg-gradient-to-br from-primary/30 to-accent/40 ring-2 ring-primary/20">
+                    <AvatarFallback className="text-3xl">{story.emoji}</AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="font-medium text-muted-foreground">Аноним</span>
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="font-semibold text-foreground">Аноним</span>
                       <span className="text-sm text-muted-foreground">•</span>
                       <span className="text-sm text-muted-foreground">{story.timestamp}</span>
                     </div>
-                    <p className="text-foreground mb-4 leading-relaxed">{story.text}</p>
-                    <div className="flex items-center gap-4">
-                      <Badge className={story.categoryColor}>
-                        <span className="mr-1">{story.emoji}</span>
+                    <p className="text-foreground/90 mb-5 leading-relaxed text-base">{story.text}</p>
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <Badge className={`${story.categoryColor} border px-3 py-1.5 text-sm font-medium`}>
+                        <span className="mr-1.5">{story.emoji}</span>
                         {story.category}
                       </Badge>
-                      <Button variant="ghost" size="sm" className="gap-2">
-                        <Icon name="Heart" size={16} />
-                        Поддержать
+                      <Button variant="ghost" size="sm" className="gap-2 hover:bg-rose-50 hover:text-rose-600">
+                        <Icon name="Heart" size={18} />
+                        <span className="hidden sm:inline">Поддержать</span>
                       </Button>
-                      <Button variant="ghost" size="sm" className="gap-2">
-                        <Icon name="MessageCircle" size={16} />
-                        Ответить
+                      <Button variant="ghost" size="sm" className="gap-2 hover:bg-sky-50 hover:text-sky-600">
+                        <Icon name="MessageCircle" size={18} />
+                        <span className="hidden sm:inline">Ответить</span>
                       </Button>
                     </div>
                   </div>
@@ -200,7 +208,7 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-b from-background via-primary/5 to-background">
       <Header 
         onNavigate={setCurrentPage} 
         currentPage={currentPage} 
@@ -259,7 +267,7 @@ export default function Index() {
       {currentPage === 'how-to' && <HowTo />}
       {currentPage === 'community' && <Community />}
 
-      <footer className="border-t mt-20 bg-card/50">
+      <footer className="border-t mt-20 bg-white/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>

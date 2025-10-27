@@ -22,17 +22,19 @@ export default function Header({ onNavigate, currentPage, isLoggedIn, onLogin }:
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+    <nav className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <button 
             onClick={() => onNavigate('home')}
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 hover:opacity-80 transition-all"
           >
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <div className="w-11 h-11 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-md">
               <span className="text-2xl">🤝</span>
             </div>
-            <span className="text-xl font-semibold">Анонимная Поддержка</span>
+            <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Анонимная Поддержка
+            </span>
           </button>
           
           <div className="hidden md:flex items-center gap-6">
